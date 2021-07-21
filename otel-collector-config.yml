@@ -1,0 +1,33 @@
+extensions:
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+  jaeger:
+    protocols:
+      thrift_http:
+  zipkin:
+
+processors:
+  batch:
+    timeout: 10s
+  memory_limiter:
+      ballast_size_mib: 32
+      limit_mib: 256
+      check_interval: 1s
+
+exporters:
+  datadog/api:
+    hostname: examplehostname
+    api:
+      key: <YOUR_API_KEY>
+  logging:
+    logLevel: info
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp, zipkin, jaeger]
+      processors: [memory_limiter, batch]
+      exporters: [datadog/api, logging]

@@ -1,0 +1,19 @@
+version: "3"
+services:
+  otel-collector:
+    image: otelcontribcol:latest
+    command: ["--config=/etc/otel-collector-config.yml", "--log-level=debug","--mem-ballast-size-mib=32"]
+    ports:
+      - "55680:55680/tcp"
+      - "55681:55681/tcp"
+      - "55678:55678/tcp"
+      - "14268:14268/tcp"
+      - "4317:4317/tcp"
+      - "9411:9411/tcp"
+    volumes:
+      - ./otel-collector-config.yml:/etc/otel-collector-config.yml
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 1024m
