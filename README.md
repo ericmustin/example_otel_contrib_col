@@ -10,5 +10,5 @@ This test environment is useful for testing Docker-specific behavior of the expo
 It defines a standalone collector setup within a docker network.
 
 1. Replace <YOUR_API_KEY> with your API key in `otel-collector-config.yml`
-2. `$ docker-compose build`
+2. `$ bash ./build.sh`
 3. `$ docker-compose up`
