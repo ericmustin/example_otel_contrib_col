@@ -1,0 +1,4 @@
+[submodule "opentelemetry-collector-contrib"]
+	path = opentelemetry-collector-contrib
+	url = git@github.com:DataDog/opentelemetry-collector-contrib.git
+	branch = datadog_upscale_trace_stats
